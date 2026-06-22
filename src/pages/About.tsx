@@ -29,7 +29,7 @@ export default function About() {
       
       {/* 1. HERO HEADER INTRO */}
       <section className="max-w-4xl mx-auto text-center space-y-4">
-        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block">👋 INSIDE STORY</span>
+        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block">INSIDE STORY</span>
         <h1 className="font-serif italic text-4xl sm:text-5xl font-extrabold text-[#1A1A1A] leading-tight">
           Hi, I am Neha. I started My Zevar for women like me.
         </h1>
@@ -70,8 +70,8 @@ export default function About() {
         {/* Founder Portrait Badge card */}
         <div className="lg:col-span-5 bg-white border border-[#C9933A]/20 rounded-md p-6 shadow-sm space-y-6">
           <div className="bg-[#FAF7F2] p-4 text-center rounded-sm space-y-2 border border-[#C9933A]/10">
-            <span className="text-3xl">🙋‍♀️</span>
-            <h3 className="font-serif italic text-lg font-bold text-[#1A1A1A]">A Personal Message</h3>
+            <span className="text-xs font-bold uppercase tracking-widest text-[#1B6B5A]">A Personal Message</span>
+            <h3 className="font-serif italic text-lg font-bold text-[#1A1A1A]">From Our Founder</h3>
             <p className="text-xs text-[#555555] leading-relaxed font-sans font-medium">
               "Every necklace and earring you see on My Zevar has been checked by me personally for weight, finish, and skin comfort. I wear them myself first. If it isn't beautiful enough for my cousin's festive evening, it doesn't enter our catalog."
             </p>
@@ -81,7 +81,7 @@ export default function About() {
             <h4 className="font-serif italic text-sm font-bold text-[#1A1A1A]">Our Quality Checklist:</h4>
             <ul className="space-y-2">
               <li className="flex items-start gap-2">
-                <span className="text-[#C9933A] text-xs">✨</span>
+                <span className="text-[#C9933A] text-xs mt-0.5">—</span>
                 <span><strong>Micro-Gold Finish:</strong> Hand-polished 18k gold plating for a warm, real gold color tone.</span>
               </li>
               <li className="flex items-start gap-2">
@@ -115,7 +115,7 @@ export default function About() {
       {/* 4. THE 3 CORE PROMISES */}
       <section className="space-y-8 bg-[#1B3A2D] text-white p-10 rounded-lg border border-[#C9933A]/25 shadow-md">
         <div className="text-center max-w-sm mx-auto">
-          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">🌟 HOW WE DO IT</span>
+          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">OUR PROMISE</span>
           <h2 className="font-serif italic text-2xl sm:text-3xl font-bold mt-1 text-[#FAF7F2]">Our promise to you</h2>
         </div>
 

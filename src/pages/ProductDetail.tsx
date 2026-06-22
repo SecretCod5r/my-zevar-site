@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useApp } from '../context/AppContext';
+import { useParams } from 'react-router-dom';
 import { REVIEWS, getPlaceholderImage } from '../data/products';
 import { Star, Truck, RotateCcw, ShieldCheck, ChevronDown, ChevronUp, Plus, Minus, Check, Heart } from 'lucide-react';
 import { Review, Product } from '../types';
 
 export default function ProductDetail() {
+  const { productId: urlProductId } = useParams<{ productId: string }>();
   const { products, selectedProductId, addToCart, buyNow, openProduct, toggleWishlist, isInWishlist } = useApp();
   
-  // Find current product
-  const product = products.find((p) => p.id === selectedProductId) || products[0];
+  // Prefer URL param, fall back to context selectedProductId
+  const resolvedId = urlProductId || selectedProductId;
+  const product = products.find((p) => p.id === resolvedId) || products[0];
   
   // State for current image in gallery
   const [activeImageIdx, setActiveImageIdx] = useState(0);
@@ -231,7 +234,7 @@ export default function ProductDetail() {
               )}
             </div>
             <p className="text-[10px] text-[#555555] font-semibold uppercase tracking-wider">
-              💰 Free Cash on Delivery (COD) Included
+              Free Express Shipping Included
             </p>
           </div>
 
@@ -284,7 +287,7 @@ export default function ProductDetail() {
               onClick={() => buyNow(product)}
               className="w-full bg-[#C9933A] hover:bg-[#1B3A2D] hover:scale-[1.01] active:scale-[0.99] text-white py-4 px-6 rounded-sm font-bold text-sm tracking-wide transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer uppercase text-center transform"
             >
-              Buy Now (Express COD)
+              Buy Now — Secure Checkout
             </button>
           </div>
 
@@ -311,14 +314,14 @@ export default function ProductDetail() {
               className="w-full flex justify-between items-center px-4 py-3.5 bg-[#FAF7F2]/50 text-left cursor-pointer focus:outline-none"
             >
               <span className="text-xs font-bold uppercase tracking-wider text-[#1A1A1A] flex items-center gap-1.5">
-                <span>🌟</span> Care & Maintainance Instructions
+                Care & Maintenance Instructions
               </span>
               {careOpen ? <ChevronUp size={16} className="text-[#C9933A]" /> : <ChevronDown size={16} className="text-[#C9933A]" />}
             </button>
 
             {careOpen && (
               <div className="px-4 py-3.5 text-xs text-[#555555] leading-relaxed border-t border-[#C9933A]/10 space-y-2 animate-slide-up bg-white">
-                <p>🙋 <strong>How to protect the gold polish?</strong></p>
+                <p><strong>How to protect the gold polish?</strong></p>
                 <ul className="list-disc pl-4 space-y-1">
                   <li>Avoid direct contact with perfumes, hand sanitizers, hair sprays, or body lotions.</li>
                   <li>Shed your jewellery before bathing, swimming, or getting physical training.</li>
@@ -357,7 +360,7 @@ export default function ProductDetail() {
                       <h4 className="text-xs sm:text-sm font-bold text-[#1A1A1A]">{rev.author}</h4>
                       {rev.occasion && (
                         <span className="text-[10px] text-[#C9933A] bg-[#C9933A]/5 px-2 py-0.5 rounded-full inline-block mt-0.5 font-medium">
-                          🛍️ Purchased for: {rev.occasion}
+                          Purchased for: {rev.occasion}
                         </span>
                       )}
                     </div>
@@ -396,7 +399,7 @@ export default function ProductDetail() {
 
             {showSuccessMsg ? (
               <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs rounded-md p-4 space-y-1 animate-slide-up">
-                <p className="font-bold flex items-center gap-1">🎉 Thank you, Behn!</p>
+                <p className="font-bold flex items-center gap-1">Thank you for your review!</p>
                 <p>Your review is saved and applied. You can see it instantly rendering on your screen.</p>
               </div>
             ) : (
@@ -485,8 +488,8 @@ export default function ProductDetail() {
       {/* RELATED RECOMMENDATIONS ROW */}
       <div className="space-y-6 pt-6 border-t border-gray-100">
         <div className="text-center md:text-left">
-          <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">🌟 EXPLORE SIMILAR IDEAS</span>
-          <h3 className="font-serif italic text-2xl font-bold text-[#1A1A1A] mt-1">You might also like</h3>
+          <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">YOU MIGHT ALSO LIKE</span>
+          <h3 className="font-serif italic text-2xl font-bold text-[#1A1A1A] mt-1">Related Picks</h3>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
@@ -520,7 +523,7 @@ export default function ProductDetail() {
       {recentlyViewed.length > 0 && (
         <div className="space-y-6 pt-6 border-t border-gray-100">
           <div className="text-center md:text-left">
-            <span className="text-[#C9933A] text-xs font-bold uppercase tracking-wider">⏱️ YOUR HISTORY</span>
+            <span className="text-[#C9933A] text-xs font-bold uppercase tracking-wider">RECENTLY VIEWED</span>
             <h3 className="font-serif italic text-2xl font-bold text-[#1A1A1A] mt-1">Recently Viewed Items</h3>
           </div>
 

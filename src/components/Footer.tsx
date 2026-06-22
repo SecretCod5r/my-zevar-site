@@ -37,7 +37,7 @@ export default function Footer() {
               <strong>Jewellery for every occasion.</strong> Curating beautiful, highly polished Indian ethnic sets starting at just <strong>₹299</strong>. Real wear, honest pricing.
             </p>
             <div className="flex flex-col gap-1 pt-1 text-[11px] text-[#C9933A] font-semibold uppercase tracking-widest">
-              <span>📦 Free Delivery above ₹499</span>
+              <span>Free Delivery above ₹499</span>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ export default function Footer() {
                   onClick={() => handleShopUnderPrice(499)} 
                   className="hover:text-[#C9933A] transition-colors cursor-pointer text-left font-bold text-amber-400"
                 >
-                  Under ₹499 Selection 🏷️
+                  Under ₹499 Selection
                 </button>
               </li>
             </ul>

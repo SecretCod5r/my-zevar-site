@@ -1,6 +1,28 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Page, Product, CartItem, FilterState } from '../types';
 import { PRODUCTS, getPlaceholderImage, getDetailPlaceholderImage } from '../data/products';
+
+// Map URL pathname -> Page enum value
+function pathnameToPage(pathname: string): Page {
+  if (pathname === '/') return 'home';
+  if (pathname.startsWith('/shop')) return 'shop';
+  if (pathname.startsWith('/product')) return 'product';
+  if (pathname.startsWith('/about')) return 'about';
+  if (pathname.startsWith('/contact')) return 'contact';
+  return 'home';
+}
+
+// Map Page enum value -> URL pathname
+function pageToPathname(page: Page): string {
+  switch (page) {
+    case 'shop': return '/shop';
+    case 'product': return '/shop'; // openProduct uses /product/:id directly
+    case 'about': return '/about';
+    case 'contact': return '/contact';
+    default: return '/';
+  }
+}
 
 interface AppContextType {
   activePage: Page;
@@ -43,8 +65,15 @@ const defaultFilters: FilterState = {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [activePage, setActivePage] = useState<Page>('home');
-  const [selectedProductId, setSelectedProductId] = useState<string>('zevar-001');
+  const navigate = useNavigate();
+  const location = useLocation();
+  const activePage: Page = pathnameToPage(location.pathname);
+  const [selectedProductId, setSelectedProductId] = useState<string>(() => {
+    // Try to read product id from URL on first load
+    const parts = location.pathname.split('/');
+    if (parts[1] === 'product' && parts[2]) return parts[2];
+    return 'zevar-001';
+  });
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('my_zevar_custom_products');
     return saved ? JSON.parse(saved) : PRODUCTS;
@@ -156,7 +185,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const navigateTo = (page: Page) => {
-    setActivePage(page);
+    navigate(pageToPathname(page));
     window.scrollTo({ top: 0, behavior: 'smooth' });
     // Auto collapse cart when visiting other sections
     setCartOpen(false);
@@ -164,7 +193,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const openProduct = (productId: string) => {
     setSelectedProductId(productId);
-    navigateTo('product');
+    navigate(`/product/${productId}`);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCartOpen(false);
   };
 
   const toggleWishlist = (product: Product) => {

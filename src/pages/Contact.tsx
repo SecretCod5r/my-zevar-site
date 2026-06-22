@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, Clock, Send, ChevronDown, ChevronUp, CheckCircle, HelpCircle } from 'lucide-react';
+import { Phone, Send, ChevronDown, ChevronUp, CheckCircle, HelpCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -63,8 +63,8 @@ export default function Contact() {
       answer: 'Yes, absolutely. We enforce a 100% Lead-free, Cadmium-free, and Nickel-free standard on all our supplier polishing. Our pieces are certified hypoallergenic and completely safe for sensitive skin types, meaning they will not cause itching or leave green marks on your neck.'
     },
     {
-      question: 'What payment methods do you accept, and do you offer COD?',
-      answer: 'We support all major payment types. You can pay securely online via Credit/Debit Cards, UPI (GPay, PhonePe, Paytm), and Net Banking through our Razorpay checkout gateway. We also offer Cash on Delivery (COD) for all pin codes across India at no additional surcharge.'
+      question: 'What payment methods do you accept?',
+      answer: 'We support all major online payment types. You can pay securely via Credit/Debit Cards, UPI (GPay, PhonePe, Paytm), and Net Banking through our secure Razorpay checkout gateway. We only accept prepaid online orders to ensure smooth and secure processing.'
     }
   ];
 
@@ -73,7 +73,7 @@ export default function Contact() {
       
       {/* 1. HEADER SECTION */}
       <section className="text-center space-y-2.5 max-w-lg mx-auto">
-        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">💬 SUPPORT & HELP CENTER</span>
+        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">SUPPORT & HELP CENTER</span>
         <h1 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#1A1A1A]">Contact Customer Support</h1>
         <p className="text-sm text-[#555555]">
           Whether it is about an order dispatch, returns, or product weight, reach out—we are here to help.
@@ -106,49 +106,6 @@ export default function Contact() {
               <span>Chat with us on WhatsApp</span>
             </a>
 
-            {/* Other direct data nodes */}
-            <div className="space-y-4 pt-4 border-t border-gray-100 text-xs text-left font-medium leading-relaxed">
-              
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
-                  <Mail className="text-[#1B6B5A]" size={14} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wider text-[10px]">Direct Support Email</h4>
-                  <a href="mailto:support@myzevar.com" className="text-sm font-semibold text-[#1B6B5A] hover:underline block mt-0.5">
-                    support@myzevar.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
-                  <Clock className="text-[#1B6B5A]" size={14} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wider text-[10px]">Support Hours</h4>
-                  <p className="text-xs text-gray-600 mt-0.5">
-                    Monday to Saturday: 10:00 AM — 07:00 PM IST
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 pt-2">
-                <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
-                  <span className="text-xs text-[#1B6B5A] font-bold">🏢</span>
-                </div>
-                <div>
-                  <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wider text-[10px]">Registered Corporate Office</h4>
-                  <p className="text-xs text-gray-600 mt-0.5 leading-normal">
-                    Malik Enterprises (My Zevar)<br />
-                    102, Sona Villa, Hill Road, Bandra West,<br />
-                    Mumbai, Maharashtra — 400050<br />
-                    <span className="text-[9px] uppercase font-bold text-[#C9933A] block mt-1">GSTIN: 27AABCM8473R1ZM</span>
-                  </p>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
 
@@ -239,7 +196,7 @@ export default function Contact() {
       {/* 3. FAQ SECTION ACCORDIONS */}
       <section id="faq-section" className="max-w-4xl mx-auto space-y-6 pt-4 border-t border-gray-100">
         <div className="text-center space-y-2 mb-10">
-          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">🙋 FREQUENT QUESTIONS</span>
+          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">FREQUENT QUESTIONS</span>
           <h2 className="font-serif italic text-2xl sm:text-3xl font-extrabold text-[#1A1A1A]">Frequently Asked Questions</h2>
           <p className="text-sm text-[#555555] max-w-sm mx-auto">
             Everything you need to know about purchasing, shipping, and caring.

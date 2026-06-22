@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         jsonrpc: '2.0', method: 'call',
         params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'sale.order', 'create', [{
           partner_id: partnerId,
-          note: `Order from storefront. Payment: COD. Phone: ${customer.phone}. Address: ${customer.address}, ${customer.city}, ${customer.zip}`
+          note: `Order from storefront. Prepaid online order. Phone: ${customer.phone}. Address: ${customer.address}, ${customer.city}, ${customer.zip}`
         }]] },
         id: Date.now() + 3
       })

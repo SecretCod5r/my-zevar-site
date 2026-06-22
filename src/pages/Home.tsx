@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext';
 import { getPlaceholderImage } from '../data/products';
-import { Truck, RotateCcw, ShieldCheck, Instagram, ArrowRight, Star, Heart } from 'lucide-react';
+import { Truck, RotateCcw, ShieldCheck, ArrowRight, Star, Heart, CheckCircle } from 'lucide-react';
 
 export default function Home() {
   const { products, openProduct, addToCart, navigateTo, setFilters, resetFilters, toggleWishlist, isInWishlist } = useApp();
@@ -70,7 +70,7 @@ export default function Home() {
             {/* Descriptive Text & CTAs Left */}
             <div className="lg:col-span-5 text-center lg:text-left space-y-6">
               <span className="inline-block bg-[#1B6B5A]/10 text-[#1B6B5A] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#1B6B5A]/15 font-accent-label">
-                🌸 100% HYPOALLERGENIC & TARNISH-RESISTANT
+                100% HYPOALLERGENIC & TARNISH-RESISTANT
               </span>
               
               <h1 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl font-black text-[#1A1A1A] leading-tight">
@@ -82,7 +82,7 @@ export default function Home() {
               </p>
 
               <div className="text-amber-700 font-bold text-sm bg-amber-500/10 inline-block px-4 py-2 rounded-md border border-amber-600/15">
-                ✨ Traditional Sets Starting from <span className="text-[#1B6B5A] font-extrabold text-lg">₹299</span>
+                Traditional Sets Starting from <span className="text-[#1B6B5A] font-extrabold text-lg">₹299</span>
               </div>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3.5 pt-2">
@@ -155,8 +155,8 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
                 <ShieldCheck className="text-[#C9933A] shrink-0" size={23} />
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A] font-sans">Cash on Delivery & UPI</h4>
-                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">100% secure checkout and cash payment options at your door</p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A] font-sans">Prepaid & Secure UPI</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">100% secure checkout and instant digital payment options</p>
                 </div>
               </div>
 
@@ -190,7 +190,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
               <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Festive Special</h3>
-              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Pooja & Diwali Ready ✨</p>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Pooja & Diwali Ready</p>
             </div>
           </div>
 
@@ -208,7 +208,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
               <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Wedding Guest</h3>
-              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Elegant & Heavy Looks 🌸</p>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Elegant & Heavy Looks</p>
             </div>
           </div>
 
@@ -226,7 +226,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
               <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Daily Wear</h3>
-              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Office & Kurta Friendly 🌿</p>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Office & Kurta Friendly</p>
             </div>
           </div>
 
@@ -241,7 +241,7 @@ export default function Home() {
             </div>
             
             <div className="absolute inset-0 flex flex-col justify-between p-5 z-20">
-              <span className="text-3xl">🏷️</span>
+              <div />
               <div>
                 <h3 className="font-serif italic text-xl sm:text-2xl font-bold text-white">Under ₹499</h3>
                 <p className="text-[11px] text-[#C9933A] font-medium leading-relaxed mt-1">
@@ -258,7 +258,7 @@ export default function Home() {
       <section id="bestsellers-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-[#FAF7F2]">
         <div className="flex flex-col sm:flex-row justify-between items-end mb-8 gap-4 border-b border-[#C9933A]/10 pb-4">
           <div>
-            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">🔥 TOP FAVORITES</span>
+            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">TOP FAVORITES</span>
             <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A] mt-1">Our Bestsellers</h2>
           </div>
           <button 
@@ -385,77 +385,50 @@ export default function Home() {
 
       {/* 4. VALUE PROPOSITION & BRAND PROMISE SECTION -(Forest Green Background) */}
       <section id="value-prop-section" className="bg-[#1B3A2D] text-white py-16 border-y border-[#C9933A]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            
-            {/* Left Column: Founder's Story */}
-            <div className="space-y-6 text-left">
-              <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-accent-label">
-                🙋‍♀️ OUR HUMAN STORY
-              </span>
-              <h2 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] leading-tight">
-                Born in Bandra, Mumbai. Built for Clever Shoppers.
-              </h2>
-              <div className="h-0.5 w-16 bg-[#C9933A]" />
-              <div className="space-y-4 text-sm text-[#FAF7F2]/85 leading-relaxed font-sans font-medium">
-                <p>
-                  "My Zevar began in Bandra, Mumbai when I was searching for elegant, cohesive bridesmaid jewellery sets for my sister's wedding. I was shocked by the choices: either boutique showrooms charging upwards of ₹5,000 for simple gold-plated sets, or street stalls selling cheap alloys that turned black in a single evening."
-                </p>
-                <p>
-                  "I realized that Indian women deserve elegant, durable festive jewellery without the luxury boutique markups. So, I spent months traveling directly to manufacturing and polishing centers, cutting out wholesalers, and curating My Zevar."
-                </p>
-                <p>
-                  "Every design in our catalog is hand-checked by me for weight, shine, and neck comfort, ensuring you look complete and spend less."
-                </p>
-                <p className="text-[#C9933A] font-serif italic text-base font-semibold">
-                  — Neha Malik, Founder
-                </p>
-              </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <div className="space-y-3">
+            <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-accent-label">
+              CRAFTSMANSHIP & METALLURGY
+            </span>
+            <h2 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] leading-tight">
+              Guaranteed Material Integrity
+            </h2>
+            <p className="text-sm text-[#FAF7F2]/80 max-w-xl mx-auto font-sans font-medium">
+              We focus on premium durability and tarnish-free plating, offering micro gold-plated sets you can wear with absolute confidence.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-left bg-white/5 border border-white/10 rounded-lg p-8">
+            <div className="space-y-1">
+              <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Real-Weight Base Alloy</h4>
+              <p className="text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">We use a premium copper-brass metal base. This gives our chokers and jhumkas the satisfying, substantial weight of real gold jewellery, instead of light, cheap plastic alternatives.</p>
             </div>
-
-            {/* Right Column: Craftsmanship & Metallurgy Specs */}
-            <div className="bg-white/5 border border-white/10 rounded-lg p-8 space-y-6 text-left">
-              <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-accent-label">
-                🛠️ CRAFTSMANSHIP & METALLURGY
-              </span>
-              <h3 className="font-serif italic text-2xl font-bold text-[#FAF7F2]">
-                Guaranteed Material Integrity
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">
-                <div className="space-y-1">
-                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Real-Weight Base Alloy</h4>
-                  <p>We use a premium copper-brass metal base. This gives our chokers and jhumkas the satisfying, substantial weight of real gold jewellery, instead of light, cheap plastic alternatives.</p>
-                </div>
-                <div className="space-y-1">
-                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">18k Micro-Gold Plating</h4>
-                  <p>Our pieces are micro-plated with a warm 18k gold tone and treated with an anti-tarnish protective lacquer to ensure long-lasting lustre and resistance to oxidation.</p>
-                </div>
-                <div className="space-y-1">
-                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">100% Skin Safe & Hypoallergenic</h4>
-                  <p>Free from harmful Lead, Nickel, or Cadmium. Our jewellery is certified safe for long Indian wedding events and sensitive skin types.</p>
-                </div>
-                <div className="space-y-1">
-                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Premium Protective Packaging</h4>
-                  <p>Every set is packaged in bubble wrap inside a rigid cardboard container and includes a custom soft suede storage pouch to prevent scratch friction.</p>
-                </div>
-              </div>
-              
-              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-4 items-center justify-between">
-                <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">🌟 6-Month Polish Warranty Standard</span>
-                <button
-                  id="value-prop-action-btn"
-                  onClick={() => {
-                    resetFilters();
-                    navigateTo('shop');
-                  }}
-                  className="bg-[#C9933A] hover:bg-[#FAF7F2] hover:text-[#1B3A2D] text-white font-bold py-3 px-6 rounded-sm transition-all duration-300 text-[10px] uppercase tracking-wider cursor-pointer btn-gold"
-                >
-                  Shop the Collection
-                </button>
-              </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">18k Micro-Gold Plating</h4>
+              <p className="text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">Our pieces are micro-plated with a warm 18k gold tone and treated with an anti-tarnish protective lacquer to ensure long-lasting lustre and resistance to oxidation.</p>
             </div>
-
+            <div className="space-y-1">
+              <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">100% Skin Safe & Hypoallergenic</h4>
+              <p className="text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">Free from harmful Lead, Nickel, or Cadmium. Our jewellery is certified safe for long Indian wedding events and sensitive skin types.</p>
+            </div>
+            <div className="space-y-1">
+              <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Premium Protective Packaging</h4>
+              <p className="text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">Every set is packaged in bubble wrap inside a rigid cardboard container and includes a custom soft suede storage pouch to prevent scratch friction.</p>
+            </div>
+          </div>
+          
+          <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-white/10">
+            <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider font-sans">6-Month Polish Warranty Standard</span>
+            <button
+              id="value-prop-action-btn"
+              onClick={() => {
+                resetFilters();
+                navigateTo('shop');
+              }}
+              className="bg-[#C9933A] hover:bg-[#FAF7F2] hover:text-[#1B3A2D] text-white font-bold py-3.5 px-8 rounded-sm transition-all duration-300 text-[10px] uppercase tracking-wider cursor-pointer btn-gold font-sans"
+            >
+              Shop the Collection
+            </button>
           </div>
         </div>
       </section>
@@ -464,7 +437,7 @@ export default function Home() {
       <section id="new-arrivals-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col sm:flex-row justify-between items-end mb-8 gap-4 border-b border-[#C9933A]/10 pb-4">
           <div>
-            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">✨ FRESH LAUNCHES</span>
+            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">FRESH LAUNCHES</span>
             <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A] mt-1">Just In</h2>
           </div>
           <button 
@@ -589,7 +562,7 @@ export default function Home() {
       {/* 5.5 CUSTOMER REVIEWS & TESTIMONIALS SECTION */}
       <section id="homepage-testimonials-section" className="bg-[#FAF7F2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="text-center space-y-2 mb-10">
-          <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">⭐ WHAT CUSTOMERS SAY</span>
+          <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">WHAT OUR CUSTOMERS SAY</span>
           <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A]">Loved by 15,000+ Happy Customers</h2>
           <p className="text-sm text-[#555555] max-w-md mx-auto">
             See why women across India choose My Zevar for weddings, office wear, and family celebrations.
@@ -647,54 +620,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. INSTAGRAM / UGC FEED - WORN AND LOVED */}
-      <section id="ugc-instagram-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="text-center space-y-2 mb-8">
-          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">📷 SOCIAL DIARIES</span>
-          <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A]">Worn and loved</h2>
-          <p className="text-sm text-[#555555] max-w-sm mx-auto">
-            See how real women styles My Zevar choker and jhumkas sets inside their diaries.
-          </p>
-        </div>
-
-        {/* 6 Image Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          {ugcSubImages.map((ugc, i) => (
-            <div 
-              key={i} 
-              className="group relative h-48 rounded-sm overflow-hidden border border-[#C9933A]/10 shadow-xs hover:shadow-md transition-all duration-300 bg-teal-900"
-            >
-              {/* Overlay styling */}
-              <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/30 transition-all duration-300 z-10" />
-              <img 
-                src={getPlaceholderImage(`ugc-${i}`, `UGC Wearer ${ugc.handle}`)} 
-                alt={`Zevar styled by ${ugc.handle}`} 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 select-none"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-              
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 z-20 flex flex-col text-left">
-                <span className="text-[10px] text-amber-400 font-mono tracking-wider">{ugc.handle}</span>
-                <span className="text-[9px] text-white/80 font-sans truncate">{ugc.title}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-6">
-          <a 
-            id="instagram-promo-link"
-            href="https://instagram.com/myzevar" 
-            target="_blank" 
-            rel="noreferrer" 
-            className="inline-flex items-center gap-2 text-xs font-bold text-[#1B6B5A] hover:text-[#C9933A] transition-colors"
-          >
-            <Instagram size={14} />
-            <span>Follow us on Instagram @myzevar</span>
-          </a>
-        </div>
-      </section>
 
       {/* 7. EMAIL CAPTURE SECTION */}
       <section id="email-form-section" className="max-w-4xl mx-auto px-4 py-12 rounded-lg bg-[#1B3A2D]/5 border border-[#C9933A]/20">
@@ -708,8 +633,8 @@ export default function Home() {
 
           {newsletterSubscribed ? (
             <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-md p-4 text-xs font-semibold flex items-center justify-center gap-2 animate-slide-up">
-              <span className="text-lg">🎉</span>
-              <span>Shabaash! You will get first access code instantly. Check your mail shortly.</span>
+              <CheckCircle className="text-emerald-700 shrink-0" size={18} />
+              <span>You're on the list! Check your inbox for early access.</span>
             </div>
           ) : (
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row items-stretch gap-2.5 mt-4">

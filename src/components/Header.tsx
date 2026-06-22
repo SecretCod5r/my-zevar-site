@@ -271,10 +271,10 @@ export default function Header() {
               <div className="pl-3 py-2 border-l border-[#C9933A]/20">
                 <p className="text-xs uppercase tracking-widest text-[#555555] font-semibold mb-2">Shop by Collection</p>
                 <div className="grid grid-cols-1 gap-2.5">
-                  <button onClick={() => handleShopByCategory('Necklace Sets')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">✨ Necklace Sets</button>
-                  <button onClick={() => handleShopByCategory('Chokers')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">✨ Choker Sets</button>
-                  <button onClick={() => handleShopByCategory('Earrings')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">✨ Earrings & Jhumkas</button>
-                  <button onClick={() => handleShopByCategory('Temple Jewellery')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">✨ Temple Jewellery</button>
+                  <button onClick={() => handleShopByCategory('Necklace Sets')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">Necklace Sets</button>
+                  <button onClick={() => handleShopByCategory('Chokers')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">Choker Sets</button>
+                  <button onClick={() => handleShopByCategory('Earrings')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">Earrings & Jhumkas</button>
+                  <button onClick={() => handleShopByCategory('Temple Jewellery')} className="text-left text-sm text-[#1A1A1A] hover:text-[#1B6B5A] py-1 font-medium">Temple Jewellery</button>
                 </div>
               </div>
 

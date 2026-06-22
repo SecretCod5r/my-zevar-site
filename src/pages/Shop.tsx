@@ -99,7 +99,7 @@ export default function Shop() {
       
       {/* Decorative Branding Header */}
       <div className="text-center space-y-2 mb-10">
-        <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-medium">✨ MY ZEVAR ETHNIC CATALOGUE ✨</span>
+        <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-medium">MY ZEVAR ETHNIC CATALOGUE</span>
         <h1 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#1A1A1A]">Every Occasion Curated Sets</h1>
         <p className="text-sm text-[#555555] max-w-md mx-auto">
           Warm copper-gold finish, real-world weights, and custom designs under direct expert curation.
@@ -192,7 +192,7 @@ export default function Shop() {
                         : 'text-[#1A1A1A] hover:bg-[#1B3A2D]/5 hover:text-[#1B6B5A]'
                     }`}
                   >
-                    {cat === 'All' ? '✨ All Collections' : cat}
+                    {cat === 'All' ? 'All Collections' : cat}
                   </button>
                 ))}
               </div>
@@ -232,7 +232,7 @@ export default function Shop() {
                         : 'text-[#1A1A1A] hover:bg-[#1B3A2D]/5 hover:text-[#1B6B5A]'
                     }`}
                   >
-                    {occ === 'All' ? '🌟 All Occasions' : occ}
+                    {occ === 'All' ? 'All Occasions' : occ}
                   </button>
                 ))}
               </div>
@@ -249,7 +249,7 @@ export default function Shop() {
                 rel="noreferrer"
                 className="inline-block bg-[#C9933A] hover:bg-white hover:text-[#1B3A2D] text-white text-[10px] font-extrabold px-3 py-1.5 rounded-sm uppercase tracking-wider transition-all"
               >
-                Chat on WhatsApp 📲
+                Chat on WhatsApp
               </a>
             </div>
 
@@ -353,7 +353,7 @@ export default function Shop() {
               id="shop-empty-state-view" 
               className="bg-white border border-[#C9933A]/15 rounded-md p-12 text-center max-w-lg mx-auto my-6 shadow-sm"
             >
-              <span className="text-4xl block mb-4">✨</span>
+              <span className="text-4xl block mb-4 text-[#C9933A]">—</span>
               <h3 className="font-serif italic text-xl font-bold text-[#1A1A1A]">No matches found</h3>
               <p className="text-sm text-[#555555] mt-2 leading-relaxed">
                 We couldn't find any jewellery sets matching your current filters. Tap the button below to view our entire catalogue.
@@ -454,7 +454,7 @@ export default function Shop() {
                           {product.name}
                         </h3>
                         <p className="text-[10px] text-[#555555] line-clamp-1 italic mt-1 font-sans">
-                          🎉 Perfect for: {product.occasion} occasions
+                          Perfect for: {product.occasion} occasions
                         </p>
                       </div>
 
