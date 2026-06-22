@@ -1,0 +1,629 @@
+import React, { useState } from 'react';
+import { useApp } from '../context/AppContext';
+import { getPlaceholderImage } from '../data/products';
+import { Truck, RotateCcw, ShieldCheck, Instagram, ArrowRight, Star, Heart } from 'lucide-react';
+
+export default function Home() {
+  const { products, openProduct, addToCart, navigateTo, setFilters, resetFilters, toggleWishlist, isInWishlist } = useApp();
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
+
+  // Filter bestselling products with smart fallbacks
+  const rawBestsellers = products.filter(p => p.isBestseller);
+  const bestsellers = rawBestsellers.length > 0 ? rawBestsellers.slice(0, 4) : products.slice(0, 4);
+
+  // Filter new arrivals with smart fallbacks
+  const rawNewArrivals = products.filter(p => p.isNewArrival);
+  const newArrivals = rawNewArrivals.length > 0 
+    ? rawNewArrivals.slice(0, 4) 
+    : (products.length > 4 ? products.slice(4, 8) : products.slice(0, 4));
+
+  // Occasion list actions
+  const handleOccasionClick = (occasion: 'Festive' | 'Wedding' | 'Daily') => {
+    resetFilters();
+    setFilters(prev => ({ ...prev, occasion }));
+    navigateTo('shop');
+  };
+
+  const handlePriceThresholdClick = (maxPrice: number) => {
+    resetFilters();
+    setFilters(prev => ({ ...prev, priceRange: `under-${maxPrice}` }));
+    navigateTo('shop');
+  };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newsletterEmail.trim()) {
+      const email = newsletterEmail.trim();
+      const text = `✨ *New Newsletter Subscription!* ✨\n\n📧 *Email:* ${email}\n\n_Please send me discount codes, exclusive drops, and early deals on My Zevar hand-selected ethnic jewelry sets!_`;
+      const waUrl = `https://wa.me/919013114748?text=${encodeURIComponent(text)}`;
+      
+      // Open in new tab
+      window.open(waUrl, '_blank');
+      
+      setNewsletterSubscribed(true);
+      setNewsletterEmail('');
+    }
+  };
+
+  // Lifestyle image for hero: stunning real premium Indian gold jewelry photography
+  const heroImage = 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1200&auto=format&fit=crop';
+
+  // Small mock background UGC photo elements
+  const ugcSubImages = [
+    { handle: '@nehal_24', title: 'Lovely Kundan Set', grad: 'bg-gradient-to-tr from-[#1B3A2D] to-[#C9933A]' },
+    { handle: '@shreya.mehta', title: 'Daily wear stud look', grad: 'bg-gradient-to-tr from-[#213327] to-[#FAF7F2]/30' },
+    { handle: '@tanya_sharma', title: 'Wedding guest temple set', grad: 'bg-gradient-to-tr from-[#413327] to-[#C9933A]' },
+    { handle: '@kavya_rao', title: 'Stunning choker fit', grad: 'bg-gradient-to-tr from-[#C9933A] to-[#1B3A2D]' },
+    { handle: '@ananya_patel', title: 'Festive Jhumka glow', grad: 'bg-gradient-to-tr from-[#1B6B5A] to-[#2D433A]' },
+    { handle: '@priya.singh', title: 'Golden flower choker', grad: 'bg-gradient-to-tr from-[#11261E] to-[#FAF7F2]' }
+  ];
+
+  return (
+    <div id="home-page-container" className="animate-fade-in space-y-16">
+      
+      {/* 1. HERO SECTION */}
+      <section id="hero-banner-section" className="relative bg-[#FAF7F2] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 lg:pt-12 lg:pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            
+            {/* Descriptive Text & CTAs Left */}
+            <div className="lg:col-span-5 text-center lg:text-left space-y-6">
+              <span className="inline-block bg-[#1B6B5A]/10 text-[#1B6B5A] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#1B6B5A]/15">
+                🌸 PREMIUM INDIAN SENSIBILITY
+              </span>
+              
+              <h1 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl font-black text-[#1A1A1A] leading-tight">
+                Jewellery for every occasion.
+              </h1>
+              
+              <p className="text-sm sm:text-base text-[#555555] max-w-lg mx-auto lg:mx-0 leading-relaxed font-sans font-medium">
+                Elegant necklace sets, stunning temple jhumkas, and premium chokers curated for real Indian women. High polish finishing, durable shine, and zero middleman markups.
+              </p>
+
+              <div className="text-amber-700 font-bold text-sm bg-amber-500/10 inline-block px-4 py-2 rounded-md border border-amber-600/15">
+                ✨ Ethnic Sets Starting from <span className="text-[#1B6B5A] font-extrabold text-lg">₹299</span>
+              </div>
+
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3.5 pt-2">
+                <button
+                  id="hero-cta-shop-now"
+                  onClick={() => {
+                    resetFilters();
+                    navigateTo('shop');
+                  }}
+                  className="bg-[#1B6B5A] hover:bg-[#C9933A] text-white font-bold py-3.5 px-8 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#C9933A] text-center cursor-pointer"
+                >
+                  Shop Now
+                </button>
+                <button
+                  id="hero-cta-view-cols"
+                  onClick={() => {
+                    resetFilters();
+                    setFilters(prev => ({ ...prev, sort: 'Featured' }));
+                    navigateTo('shop');
+                  }}
+                  className="border border-[#1B3A2D]/30 text-[#1B3A2D] hover:bg-[#1B3A2D]/5 font-bold py-3.5 px-8 rounded-sm transition-all duration-200 text-center cursor-pointer"
+                >
+                  View Collections
+                </button>
+              </div>
+            </div>
+
+            {/* Premium Lifestyle Image Placeholder Right */}
+            <div className="lg:col-span-7">
+              <div className="relative rounded-lg overflow-hidden border border-[#C9933A]/20 shadow-xl aspect-[16/10] bg-[#1B3A2D]/10">
+                <img 
+                  src={heroImage} 
+                  alt="My Zevar Ethnic Jewellery Lifestyle" 
+                  className="w-full h-full object-cover select-none"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-6">
+                  <div className="text-white text-xs sm:text-sm font-sans flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
+                    <span>Live Showcase: Real-toned gold-plated sets are active now</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* TRUST STRIP BAR */}
+        <div className="bg-[#1B3A2D] text-white py-4 border-y border-[#C9933A]/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+              
+              <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
+                <Truck className="text-[#C9933A] shrink-0" size={24} />
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">Free Delivery Over ₹499</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Dispatched quickly inside 24 hours</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
+                <RotateCcw className="text-[#C9933A] shrink-0" size={22} />
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">Easy 7-Day Returns</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Self-return option on WhatsApp</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
+                <ShieldCheck className="text-[#C9933A] shrink-0" size={23} />
+                <div>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">100% Secure Payments</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Cash on Delivery (COD) & UPI</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. OCCASION COLLECTIONS GRID */}
+      <section id="occasion-grid-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="text-center space-y-2 mb-10">
+          <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A]">Shop by Occasion</h2>
+          <p className="text-sm text-[#555555] max-w-md mx-auto">
+            Choose carefully curated pieces made to shine under specific celebrations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          
+          {/* Festive */}
+          <div 
+            onClick={() => handleOccasionClick('Festive')}
+            className="group relative h-48 sm:h-64 rounded-md overflow-hidden border border-[#C9933A]/10 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-[#C9933A]/20 group-hover:bg-[#C9933A]/10 transition-all duration-300 z-10" />
+            <img 
+              src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=600&auto=format&fit=crop" 
+              alt="Festive Collection" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
+              <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Festive Special</h3>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Pooja & Diwali Ready ✨</p>
+            </div>
+          </div>
+
+          {/* Wedding Guest */}
+          <div 
+            onClick={() => handleOccasionClick('Wedding')}
+            className="group relative h-48 sm:h-64 rounded-md overflow-hidden border border-[#C9933A]/10 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-[#1B3A2D]/15 group-hover:bg-[#1B3A2D]/5 transition-all duration-300 z-10" />
+            <img 
+              src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=600&auto=format&fit=crop" 
+              alt="Wedding Guest collection" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
+              <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Wedding Guest</h3>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Elegant & Heavy Looks 🌸</p>
+            </div>
+          </div>
+
+          {/* Daily Wear */}
+          <div 
+            onClick={() => handleOccasionClick('Daily')}
+            className="group relative h-48 sm:h-64 rounded-md overflow-hidden border border-[#C9933A]/10 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-[#1B3A2D]/5 group-hover:bg-transparent transition-all duration-300 z-10" />
+            <img 
+              src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600&auto=format&fit=crop" 
+              alt="Daily Wear Collection" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex flex-col justify-end p-4 z-20">
+              <h3 className="font-serif italic text-lg sm:text-xl font-bold text-white group-hover:text-[#C9933A] transition-colors">Daily Wear</h3>
+              <p className="text-[10px] text-gray-300 mt-1 uppercase tracking-wider">Office & Kurta Friendly 🌿</p>
+            </div>
+          </div>
+
+          {/* Under Rs 499 */}
+          <div 
+            onClick={() => handlePriceThresholdClick(499)}
+            className="group relative h-48 sm:h-64 rounded-md overflow-hidden border-2 border-dashed border-[#C9933A]/50 bg-[#1B3A2D] shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#1B3A2D] to-transparent group-hover:bg-black/10 transition-all duration-300 z-15" />
+            <div className="absolute right-3 top-3 bg-[#C9933A] text-white text-[10px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wide z-20">
+              SALE TAG
+            </div>
+            
+            <div className="absolute inset-0 flex flex-col justify-between p-5 z-20">
+              <span className="text-3xl">🏷️</span>
+              <div>
+                <h3 className="font-serif italic text-xl sm:text-2xl font-bold text-white">Under ₹499</h3>
+                <p className="text-[11px] text-[#C9933A] font-medium leading-relaxed mt-1">
+                  Budget ethnic gems. No compromise on quality. Buy now!
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. OUR BESTSELLERS SECTION */}
+      <section id="bestsellers-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-[#FAF7F2]">
+        <div className="flex flex-col sm:flex-row justify-between items-end mb-8 gap-4 border-b border-[#C9933A]/10 pb-4">
+          <div>
+            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">🔥 TOP FAVORITES</span>
+            <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A] mt-1">Our Bestsellers</h2>
+          </div>
+          <button 
+            id="view-all-bestsellers-btn"
+            onClick={() => {
+              resetFilters();
+              setFilters(prev => ({ ...prev, sort: 'Featured' }));
+              navigateTo('shop');
+            }}
+            className="text-xs font-bold text-[#1B6B5A] hover:text-[#C9933A] flex items-center gap-1 cursor-pointer transition-colors"
+          >
+            <span>View All Bestsellers</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        {/* 4 Cards Grid / Mobile Sideways Horizontal Scroll */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth">
+          {bestsellers.map(product => {
+            const hasSale = !!product.originalPrice;
+            const discountPct = hasSale ? Math.round(((product.originalPrice! - product.price) / product.originalPrice!) * 100) : 0;
+            
+            return (
+              <div 
+                key={product.id}
+                className="group flex flex-col justify-between bg-white border border-[#C9933A]/10 hover:border-[#C9933A] rounded-sm p-3.5 transition-all duration-300 relative hover:shadow-lg"
+              >
+                {/* Badges */}
+                <div className="absolute top-3.5 left-3.5 z-20 flex flex-col gap-1">
+                  {product.badge && (
+                    <span className="bg-[#C9933A] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider shadow-sm">
+                      {product.badge}
+                    </span>
+                  )}
+                  {hasSale && (
+                    <span className="bg-[#1B6B5A] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider shadow-sm">
+                      {discountPct}% OFF
+                    </span>
+                  )}
+                </div>
+
+                {/* Rating overlay badge */}
+                <div className="absolute top-3.5 right-3.5 z-20 bg-[#FAF7F2]/90 backdrop-blur-xs rounded-full px-1.5 py-0.5 text-[9px] font-bold text-[#1A1A1A] flex items-center gap-0.5 shadow-xs">
+                  <Star size={9.5} className="fill-[#C9933A] stroke-[#C9933A]" />
+                  <span>{product.rating}</span>
+                </div>
+
+                {/* Product Image Wrapper */}
+                <div 
+                  onClick={() => openProduct(product.id)}
+                  className="aspect-square w-full rounded-sm overflow-hidden bg-[#FAF7F2] relative cursor-pointer"
+                >
+                  <img 
+                    src={product.images[0]} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  {/* Heart Wishlist Overlay button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleWishlist(product);
+                    }}
+                    className="absolute top-2.5 right-2.5 z-30 w-7.5 h-7.5 rounded-full bg-white/95 backdrop-blur-xs shadow-sm flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-[#C9933A] border border-[#C9933A]/10"
+                    title={isInWishlist(product.id) ? "Remove from saved items" : "Save item"}
+                  >
+                    <Heart 
+                      size={13} 
+                      className={isInWishlist(product.id) ? "fill-rose-600 text-rose-600 animate-pulse" : "text-gray-500 hover:text-rose-600 transition-colors"} 
+                    />
+                  </button>
+                  {/* Quick look gradient hover */}
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                    <span className="bg-white/95 backdrop-blur-sm text-xs font-semibold text-[#1A1A1A] px-3.5 py-2.5 rounded-sm shadow-sm hover:bg-[#1B6B5A] hover:text-white transition-colors duration-200">
+                      Quick Details
+                    </span>
+                  </div>
+                </div>
+
+                {/* Product Info below image */}
+                <div className="mt-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[10px] text-[#C9933A] uppercase tracking-wider font-semibold font-sans">
+                      {product.category}
+                    </span>
+                    <h3 
+                      onClick={() => openProduct(product.id)}
+                      className="text-xs sm:text-sm font-medium text-[#1A1A1A] line-clamp-1 hover:text-[#1B6B5A] cursor-pointer mt-0.5"
+                    >
+                      {product.name}
+                    </h3>
+                  </div>
+
+                  <div className="mt-2.5 pt-2 border-t border-[#C9933A]/10">
+                    <div className="flex items-baseline justify-between">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-sm sm:text-base font-bold text-[#1B6B5A]">
+                          ₹{product.price}
+                        </span>
+                        {hasSale && (
+                          <span className="text-xs text-gray-400 line-through">
+                            ₹{product.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[10px] text-gray-400 font-medium">({product.reviewCount} Reviews)</span>
+                    </div>
+
+                    <button 
+                      onClick={() => addToCart(product)}
+                      className="w-full mt-3 bg-[#1B6B5A] hover:bg-[#C9933A] hover:text-white text-white text-xs font-bold py-2 px-3 rounded-sm transition-all duration-300 cursor-pointer"
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 4. VALUE PROPOSITION SECTION -(Forest Green Background) */}
+      <section id="value-prop-section" className="bg-[#1B3A2D] text-white py-16 px-4 border-y border-[#C9933A]/20">
+        <div className="max-w-4xl mx-auto text-center space-y-6">
+          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">
+            🌿 OUR HONEST BRAND PROMISE
+          </span>
+          <h2 className="font-serif italic text-4xl sm:text-5xl font-black text-[#FAF7F2] leading-tight">
+            Look complete. Spend less.
+          </h2>
+          <p className="text-sm sm:text-base text-[#FAF7F2]/80 leading-relaxed max-w-2xl mx-auto">
+            Every ethnic necklace set and earring duo at My Zevar is curated for genuine Indian family occasions. Not generic catalog items. Not heavily marked-up designer luxury. Just stunning, high polish jewellery you can buy with total confidence and zero guilt.
+          </p>
+          <div className="pt-4">
+            <button
+              id="value-prop-action-btn"
+              onClick={() => {
+                resetFilters();
+                navigateTo('shop');
+              }}
+              className="bg-[#C9933A] hover:bg-[#FAF7F2] hover:text-[#1B3A2D] text-white font-bold py-3.5 px-10 rounded-sm transition-all duration-300 shadow-md uppercase tracking-wider text-xs cursor-pointer"
+            >
+              Shop All Sets & Save
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. NEW ARRIVALS ("Just In") SECTION */}
+      <section id="new-arrivals-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex flex-col sm:flex-row justify-between items-end mb-8 gap-4 border-b border-[#C9933A]/10 pb-4">
+          <div>
+            <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-wider">✨ FRESH LAUNCHES</span>
+            <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A] mt-1">Just In</h2>
+          </div>
+          <button 
+            id="view-all-new-arrivals-btn"
+            onClick={() => {
+              resetFilters();
+              setFilters(prev => ({ ...prev, sort: 'New Arrivals' }));
+              navigateTo('shop');
+            }}
+            className="text-xs font-bold text-[#1B6B5A] hover:text-[#C9933A] flex items-center gap-1 cursor-pointer transition-colors"
+          >
+            <span>View All New Arrivals</span>
+            <ArrowRight size={14} />
+          </button>
+        </div>
+
+        {/* 4 Cards Grid / Mobile Sideways Horizontal Scroll */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth">
+          {newArrivals.map(product => {
+            const hasSale = !!product.originalPrice;
+            const discountPct = hasSale ? Math.round(((product.originalPrice! - product.price) / product.originalPrice!) * 100) : 0;
+            
+            return (
+              <div 
+                key={product.id}
+                className="group flex flex-col justify-between bg-white border border-[#C9933A]/10 hover:border-[#C9933A] rounded-sm p-3.5 transition-all duration-300 relative hover:shadow-lg"
+              >
+                {/* Badges */}
+                <div className="absolute top-3.5 left-3.5 z-20 flex flex-col gap-1">
+                  <span className="bg-[#1B6B5A] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider shadow-sm">
+                    Just In
+                  </span>
+                  {hasSale && (
+                    <span className="bg-[#C9933A] text-white text-[9.5px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider shadow-sm">
+                      {discountPct}% OFF
+                    </span>
+                  )}
+                </div>
+
+                {/* Rating overlay badge */}
+                <div className="absolute top-3.5 right-3.5 z-20 bg-[#FAF7F2]/90 backdrop-blur-xs rounded-full px-1.5 py-0.5 text-[9px] font-bold text-[#1A1A1A] flex items-center gap-0.5 shadow-xs">
+                  <Star size={9.5} className="fill-[#C9933A] stroke-[#C9933A]" />
+                  <span>{product.rating}</span>
+                </div>
+
+                {/* Product Image Wrapper */}
+                <div 
+                  onClick={() => openProduct(product.id)}
+                  className="aspect-square w-full rounded-sm overflow-hidden bg-[#FAF7F2] relative cursor-pointer"
+                >
+                  <img 
+                    src={product.images[0]} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  {/* Heart Wishlist Overlay button */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      toggleWishlist(product);
+                    }}
+                    className="absolute top-2.5 right-2.5 z-30 w-7.5 h-7.5 rounded-full bg-white/95 backdrop-blur-xs shadow-sm flex items-center justify-center hover:scale-110 active:scale-95 transition-all text-[#C9933A] border border-[#C9933A]/10"
+                    title={isInWishlist(product.id) ? "Remove from saved items" : "Save item"}
+                  >
+                    <Heart 
+                      size={13} 
+                      className={isInWishlist(product.id) ? "fill-rose-600 text-rose-600 animate-pulse" : "text-gray-500 hover:text-rose-600 transition-colors"} 
+                    />
+                  </button>
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                    <span className="bg-white/95 backdrop-blur-sm text-xs font-semibold text-[#1A1A1A] px-3.5 py-2.5 rounded-sm shadow-sm hover:bg-[#1B6B5A] hover:text-white transition-colors duration-200">
+                      Quick Details
+                    </span>
+                  </div>
+                </div>
+
+                {/* Product Info below image */}
+                <div className="mt-4 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="text-[10px] text-[#C9933A] uppercase tracking-wider font-semibold font-sans">
+                      {product.category}
+                    </span>
+                    <h3 
+                      onClick={() => openProduct(product.id)}
+                      className="text-xs sm:text-sm font-medium text-[#1A1A1A] line-clamp-1 hover:text-[#1B6B5A] cursor-pointer mt-0.5"
+                    >
+                      {product.name}
+                    </h3>
+                  </div>
+
+                  <div className="mt-2.5 pt-2 border-t border-[#C9933A]/10">
+                    <div className="flex items-baseline justify-between">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-sm sm:text-base font-bold text-[#1B6B5A]">
+                          ₹{product.price}
+                        </span>
+                        {hasSale && (
+                          <span className="text-xs text-gray-400 line-through">
+                            ₹{product.originalPrice}
+                          </span>
+                        )}
+                      </div>
+                      <span className="text-[10px] text-gray-400 font-medium">({product.reviewCount} Reviews)</span>
+                    </div>
+
+                    <button 
+                      onClick={() => addToCart(product)}
+                      className="w-full mt-3 bg-[#1B6B5A] hover:bg-[#C9933A] hover:text-white text-white text-xs font-bold py-2 px-3 rounded-sm transition-all duration-300 cursor-pointer"
+                    >
+                      Add To Cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 6. INSTAGRAM / UGC FEED - WORN AND LOVED */}
+      <section id="ugc-instagram-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="text-center space-y-2 mb-8">
+          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">📷 SOCIAL DIARIES</span>
+          <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A]">Worn and loved</h2>
+          <p className="text-sm text-[#555555] max-w-sm mx-auto">
+            See how real women styles My Zevar choker and jhumkas sets inside their diaries.
+          </p>
+        </div>
+
+        {/* 6 Image Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          {ugcSubImages.map((ugc, i) => (
+            <div 
+              key={i} 
+              className="group relative h-48 rounded-sm overflow-hidden border border-[#C9933A]/10 shadow-xs hover:shadow-md transition-all duration-300 bg-teal-900"
+            >
+              {/* Overlay styling */}
+              <div className="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/30 transition-all duration-300 z-10" />
+              <img 
+                src={getPlaceholderImage(`ugc-${i}`, `UGC Wearer ${ugc.handle}`)} 
+                alt={`Zevar styled by ${ugc.handle}`} 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 select-none"
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+              
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-3 z-20 flex flex-col text-left">
+                <span className="text-[10px] text-amber-400 font-mono tracking-wider">{ugc.handle}</span>
+                <span className="text-[9px] text-white/80 font-sans truncate">{ugc.title}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-6">
+          <a 
+            id="instagram-promo-link"
+            href="https://instagram.com/myzevar" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="inline-flex items-center gap-2 text-xs font-bold text-[#1B6B5A] hover:text-[#C9933A] transition-colors"
+          >
+            <Instagram size={14} />
+            <span>Follow us on Instagram @myzevar</span>
+          </a>
+        </div>
+      </section>
+
+      {/* 7. EMAIL CAPTURE SECTION */}
+      <section id="email-form-section" className="max-w-4xl mx-auto px-4 py-12 rounded-lg bg-[#1B3A2D]/5 border border-[#C9933A]/20">
+        <div className="text-center max-w-lg mx-auto space-y-4">
+          <h2 className="font-serif italic text-2xl sm:text-3xl font-bold text-[#1A1A1A]">
+            Get first access to new arrivals
+          </h2>
+          <p className="text-xs sm:text-sm text-[#555555] leading-relaxed">
+            No spam. Just early drops, exclusive deals on festive collections, and secret ₹299 coupon alerts.
+          </p>
+
+          {newsletterSubscribed ? (
+            <div className="bg-emerald-50 border border-emerald-300 text-emerald-800 rounded-md p-4 text-xs font-semibold flex items-center justify-center gap-2 animate-slide-up">
+              <span className="text-lg">🎉</span>
+              <span>Shabaash! You will get first access code instantly. Check your mail shortly.</span>
+            </div>
+          ) : (
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row items-stretch gap-2.5 mt-4">
+              <input
+                id="newsletter-email-input"
+                type="email"
+                required
+                placeholder="Enter your email (e.g. aditi@gmail.com)"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                className="w-full bg-[#FAF7F2] border border-[#C9933A]/30 rounded-sm px-4 py-3 text-sm text-[#1A1A1A] focus:outline-none focus:ring-1 focus:ring-[#1B6B5A]"
+              />
+              <button
+                id="newsletter-submit-btn"
+                type="submit"
+                className="bg-[#1B6B5A] hover:bg-[#C9933A] text-white font-bold py-3 px-6 rounded-sm text-sm shrink-0 uppercase tracking-wider transition-colors duration-200 cursor-pointer"
+              >
+                Subscribe
+              </button>
+            </form>
+          )}
+          <p className="text-[10px] text-gray-400">Join 15,000+ Indian women who shop clever.</p>
+        </div>
+      </section>
+
+    </div>
+  );
+}
