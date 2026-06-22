@@ -55,7 +55,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         params: {
           service: 'object', method: 'execute_kw',
           args: [ODOO_DB, uid, ODOO_PASS, 'product.template', 'search_read',
-            [[[' sale_ok', '=', true]]],
+            [[['sale_ok', '=', true]]],
             { fields: ['id', 'name', 'list_price', 'description_sale', 'image_512', 'categ_id'], limit: 50 }
           ]
         },

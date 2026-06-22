@@ -68,74 +68,63 @@ export default function CartDrawer() {
     const activeRzpKey = checkoutRazorpayKey || localStorage.getItem('my_zevar_razorpay_key') || 'rzp_test_MyZevarDummy12345';
 
     const finalizeDatabaseSubmission = async (paymentId: string) => {
-      const odooUrl = localStorage.getItem('my_zevar_odoo_url');
-      const odooDb = localStorage.getItem('my_zevar_odoo_db');
-      const odooUser = localStorage.getItem('my_zevar_odoo_user');
-      const odooPass = localStorage.getItem('my_zevar_odoo_pass');
+      const odooUrl = localStorage.getItem('my_zevar_odoo_url') || undefined;
+      const odooDb = localStorage.getItem('my_zevar_odoo_db') || undefined;
+      const odooUser = localStorage.getItem('my_zevar_odoo_user') || undefined;
+      const odooPass = localStorage.getItem('my_zevar_odoo_pass') || undefined;
 
-      if (odooUrl && odooDb && odooUser && odooPass) {
-        try {
-          const response = await fetch('/api/odoo/submit-order', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
+      try {
+        const response = await fetch('/api/odoo/submit-order', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            url: odooUrl,
+            db: odooDb,
+            username: odooUser,
+            password: odooPass,
+            customer: {
+              name: formData.name,
+              email: `${formData.phone.replace(/\D/g, '') || 'client'}@zevar-store.com`,
+              phone: formData.phone,
+              address: `${formData.address} [Paid via Razorpay: ${paymentId}]`,
+              city: formData.city || 'Mumbai',
+              zip: formData.pincode,
+              state: formData.state
             },
-            body: JSON.stringify({
-              url: odooUrl,
-              db: odooDb,
-              username: odooUser,
-              password: odooPass,
-              customer: {
-                name: formData.name,
-                email: `${formData.phone.replace(/\D/g, '') || 'client'}@zevar-store.com`,
-                phone: formData.phone,
-                address: `${formData.address} [Paid via Razorpay: ${paymentId}]`,
-                city: formData.city || 'Mumbai',
-                zip: formData.pincode,
-                state: formData.state
+            cart: cart.map(item => ({
+              product: {
+                id: item.product.id,
+                name: item.product.name,
+                price: item.product.price
               },
-              cart: cart.map(item => ({
-                product: {
-                  id: item.product.id,
-                  name: item.product.name,
-                  price: item.product.price
-                },
-                quantity: item.quantity
-              }))
-            })
-          });
+              quantity: item.quantity
+            }))
+          })
+        });
 
-          const result = await response.json() as any;
-          if (result.success && result.orderId) {
-            const finalId = `SO-${result.orderId} (Odoo)`;
-            setOrderId(finalId);
-            setCheckoutStep('success');
-            triggerAutoWhatsAppSend(finalId);
-          } else {
-            console.warn("Odoo order fallback:", result.error);
-            const generatedId = `MZ-${Math.floor(100000 + Math.random() * 900000)}`;
-            setOrderId(generatedId);
-            setCheckoutStep('success');
-            triggerAutoWhatsAppSend(generatedId);
-          }
-        } catch (err) {
-          console.error("Critical Odoo sync failed, creating local SKU order:", err);
+        const result = await response.json() as any;
+        if (result.success && result.orderId) {
+          const finalId = `SO-${result.orderId} (Odoo)`;
+          setOrderId(finalId);
+          setCheckoutStep('success');
+          triggerAutoWhatsAppSend(finalId);
+        } else {
+          console.warn("Odoo order fallback:", result?.error);
           const generatedId = `MZ-${Math.floor(100000 + Math.random() * 900000)}`;
           setOrderId(generatedId);
           setCheckoutStep('success');
           triggerAutoWhatsAppSend(generatedId);
-        } finally {
-          setLoading(false);
         }
-      } else {
-        // Direct local demo mode
-        setTimeout(() => {
-          setLoading(false);
-          const generatedId = `MZ-${Math.floor(100000 + Math.random() * 900000)}`;
-          setOrderId(generatedId);
-          setCheckoutStep('success');
-          triggerAutoWhatsAppSend(generatedId);
-        }, 1200);
+      } catch (err) {
+        console.error("Critical Odoo sync failed, creating local SKU order:", err);
+        const generatedId = `MZ-${Math.floor(100000 + Math.random() * 900000)}`;
+        setOrderId(generatedId);
+        setCheckoutStep('success');
+        triggerAutoWhatsAppSend(generatedId);
+      } finally {
+        setLoading(false);
       }
     };
 

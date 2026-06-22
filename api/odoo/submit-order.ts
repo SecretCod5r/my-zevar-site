@@ -6,7 +6,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { url, db, username, password, customer, cart } = req.body;
+    const url = req.body.url || process.env.ODOO_URL || 'https://myzevar.odoo.com';
+    const db = req.body.db || process.env.ODOO_DB || 'myzevar';
+    const username = req.body.username || process.env.ODOO_USER || '';
+    const password = req.body.password || process.env.ODOO_PASS || '';
+    const { customer, cart } = req.body;
+
     if (!url || !db || !username || !password || !customer || !cart?.length) {
       return res.status(400).json({ success: false, error: 'Missing required order information.' });
     }
@@ -34,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         jsonrpc: '2.0', method: 'call',
-        params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'res.partner', 'search', [[[' email', '=', customer.email]]]] },
+        params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'res.partner', 'search', [[['email', '=', customer.email]]]] },
         id: Date.now() + 1
       })
     });
@@ -87,7 +92,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               jsonrpc: '2.0', method: 'call',
-              params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'product.product', 'search', [[[' product_tmpl_id', '=', tmplId]]]] },
+              params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'product.product', 'search', [[['product_tmpl_id', '=', tmplId]]]] },
               id: Date.now() + 4
             })
           });
@@ -101,7 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             jsonrpc: '2.0', method: 'call',
-            params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'product.product', 'search', [[[' name', 'ilike', item.product.name]]]] },
+            params: { service: 'object', method: 'execute_kw', args: [db, uid, password, 'product.product', 'search', [[['name', 'ilike', item.product.name]]]] },
             id: Date.now() + 5
           })
         });
