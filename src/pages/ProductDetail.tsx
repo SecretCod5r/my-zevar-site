@@ -33,7 +33,10 @@ export default function ProductDetail() {
     setLocalReviews(originalReviews);
     setActiveImageIdx(0); // Reset image index on product shift
     setCareOpen(false); // Reset accordion
-  }, [product.id]);
+    if (product) {
+      document.title = `${product.name} | Buy Indian Jewellery Online | My Zevar`;
+    }
+  }, [product]);
 
   const [recentlyViewed, setRecentlyViewed] = useState<Product[]>([]);
 

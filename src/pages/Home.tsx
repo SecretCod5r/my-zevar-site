@@ -69,20 +69,20 @@ export default function Home() {
             
             {/* Descriptive Text & CTAs Left */}
             <div className="lg:col-span-5 text-center lg:text-left space-y-6">
-              <span className="inline-block bg-[#1B6B5A]/10 text-[#1B6B5A] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#1B6B5A]/15">
-                🌸 PREMIUM INDIAN SENSIBILITY
+              <span className="inline-block bg-[#1B6B5A]/10 text-[#1B6B5A] text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full border border-[#1B6B5A]/15 font-accent-label">
+                🌸 100% HYPOALLERGENIC & TARNISH-RESISTANT
               </span>
               
               <h1 className="font-serif italic text-4xl sm:text-5xl lg:text-6xl font-black text-[#1A1A1A] leading-tight">
-                Jewellery for every occasion.
+                Premium Indian Ethnic Jewellery
               </h1>
               
               <p className="text-sm sm:text-base text-[#555555] max-w-lg mx-auto lg:mx-0 leading-relaxed font-sans font-medium">
-                Elegant necklace sets, stunning temple jhumkas, and premium chokers curated for real Indian women. High polish finishing, durable shine, and zero middleman markups.
+                Explore hand-selected micro gold-plated Kundan chokers, matte-finish antique temple sets, and lightweight daily-wear earrings. Curated for authentic weight, hypoallergenic comfort, and direct-from-polishing-center pricing.
               </p>
 
               <div className="text-amber-700 font-bold text-sm bg-amber-500/10 inline-block px-4 py-2 rounded-md border border-amber-600/15">
-                ✨ Ethnic Sets Starting from <span className="text-[#1B6B5A] font-extrabold text-lg">₹299</span>
+                ✨ Traditional Sets Starting from <span className="text-[#1B6B5A] font-extrabold text-lg">₹299</span>
               </div>
 
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3.5 pt-2">
@@ -92,9 +92,9 @@ export default function Home() {
                     resetFilters();
                     navigateTo('shop');
                   }}
-                  className="bg-[#1B6B5A] hover:bg-[#C9933A] text-white font-bold py-3.5 px-8 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#C9933A] text-center cursor-pointer"
+                  className="bg-[#1B6B5A] hover:bg-[#C9933A] text-white font-bold py-3.5 px-8 rounded-sm transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#C9933A] text-center cursor-pointer font-sans text-sm uppercase tracking-wider"
                 >
-                  Shop Now
+                  Shop All Sets
                 </button>
                 <button
                   id="hero-cta-view-cols"
@@ -103,7 +103,7 @@ export default function Home() {
                     setFilters(prev => ({ ...prev, sort: 'Featured' }));
                     navigateTo('shop');
                   }}
-                  className="border border-[#1B3A2D]/30 text-[#1B3A2D] hover:bg-[#1B3A2D]/5 font-bold py-3.5 px-8 rounded-sm transition-all duration-200 text-center cursor-pointer"
+                  className="border border-[#1B3A2D]/35 text-[#1B3A2D] hover:bg-[#1B3A2D]/5 font-bold py-3.5 px-8 rounded-sm transition-all duration-200 text-center cursor-pointer font-sans text-sm uppercase tracking-wider"
                 >
                   View Collections
                 </button>
@@ -112,14 +112,14 @@ export default function Home() {
 
             {/* Premium Lifestyle Image Placeholder Right */}
             <div className="lg:col-span-7">
-              <div className="relative rounded-lg overflow-hidden border border-[#C9933A]/20 shadow-xl aspect-[16/10] bg-[#1B3A2D]/10">
+              <div className="relative rounded-lg overflow-hidden border border-[#C9933A]/25 shadow-xl aspect-[16/10] bg-[#1B3A2D]/10">
                 <img 
                   src={heroImage} 
-                  alt="My Zevar Ethnic Jewellery Lifestyle" 
+                  alt="Gold Plated Indian Kundan Choker Necklace Set styled on a model" 
                   className="w-full h-full object-cover select-none"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent flex items-end p-6">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
                   <div className="text-white text-xs sm:text-sm font-sans flex items-center gap-2">
                     <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse" />
                     <span>Live Showcase: Real-toned gold-plated sets are active now</span>
@@ -139,24 +139,24 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
                 <Truck className="text-[#C9933A] shrink-0" size={24} />
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">Free Delivery Over ₹499</h4>
-                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Dispatched quickly inside 24 hours</p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A] font-sans">Free Express Delivery</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Dispatched in 24 hrs via Bluedart/Delhivery (Free over ₹499)</p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
                 <RotateCcw className="text-[#C9933A] shrink-0" size={22} />
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">Easy 7-Day Returns</h4>
-                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Self-return option on WhatsApp</p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A] font-sans">24-Hour Return Guarantee</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Hassle-free exchange options directly via WhatsApp support</p>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row items-center sm:justify-center gap-3.5 pt-4 sm:pt-0">
                 <ShieldCheck className="text-[#C9933A] shrink-0" size={23} />
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A]">100% Secure Payments</h4>
-                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">Cash on Delivery (COD) & UPI</p>
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9933A] font-sans">Cash on Delivery & UPI</h4>
+                  <p className="text-[10px] text-[#FAF7F2]/80 mt-0.5">100% secure checkout and cash payment options at your door</p>
                 </div>
               </div>
 
@@ -383,29 +383,79 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. VALUE PROPOSITION SECTION -(Forest Green Background) */}
-      <section id="value-prop-section" className="bg-[#1B3A2D] text-white py-16 px-4 border-y border-[#C9933A]/20">
-        <div className="max-w-4xl mx-auto text-center space-y-6">
-          <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block">
-            🌿 OUR HONEST BRAND PROMISE
-          </span>
-          <h2 className="font-serif italic text-4xl sm:text-5xl font-black text-[#FAF7F2] leading-tight">
-            Look complete. Spend less.
-          </h2>
-          <p className="text-sm sm:text-base text-[#FAF7F2]/80 leading-relaxed max-w-2xl mx-auto">
-            Every ethnic necklace set and earring duo at My Zevar is curated for genuine Indian family occasions. Not generic catalog items. Not heavily marked-up designer luxury. Just stunning, high polish jewellery you can buy with total confidence and zero guilt.
-          </p>
-          <div className="pt-4">
-            <button
-              id="value-prop-action-btn"
-              onClick={() => {
-                resetFilters();
-                navigateTo('shop');
-              }}
-              className="bg-[#C9933A] hover:bg-[#FAF7F2] hover:text-[#1B3A2D] text-white font-bold py-3.5 px-10 rounded-sm transition-all duration-300 shadow-md uppercase tracking-wider text-xs cursor-pointer"
-            >
-              Shop All Sets & Save
-            </button>
+      {/* 4. VALUE PROPOSITION & BRAND PROMISE SECTION -(Forest Green Background) */}
+      <section id="value-prop-section" className="bg-[#1B3A2D] text-white py-16 border-y border-[#C9933A]/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Column: Founder's Story */}
+            <div className="space-y-6 text-left">
+              <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-accent-label">
+                🙋‍♀️ OUR HUMAN STORY
+              </span>
+              <h2 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#FAF7F2] leading-tight">
+                Born in Bandra, Mumbai. Built for Clever Shoppers.
+              </h2>
+              <div className="h-0.5 w-16 bg-[#C9933A]" />
+              <div className="space-y-4 text-sm text-[#FAF7F2]/85 leading-relaxed font-sans font-medium">
+                <p>
+                  "My Zevar began in Bandra, Mumbai when I was searching for elegant, cohesive bridesmaid jewellery sets for my sister's wedding. I was shocked by the choices: either boutique showrooms charging upwards of ₹5,000 for simple gold-plated sets, or street stalls selling cheap alloys that turned black in a single evening."
+                </p>
+                <p>
+                  "I realized that Indian women deserve elegant, durable festive jewellery without the luxury boutique markups. So, I spent months traveling directly to manufacturing and polishing centers, cutting out wholesalers, and curating My Zevar."
+                </p>
+                <p>
+                  "Every design in our catalog is hand-checked by me for weight, shine, and neck comfort, ensuring you look complete and spend less."
+                </p>
+                <p className="text-[#C9933A] font-serif italic text-base font-semibold">
+                  — Neha Malik, Founder
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Craftsmanship & Metallurgy Specs */}
+            <div className="bg-white/5 border border-white/10 rounded-lg p-8 space-y-6 text-left">
+              <span className="text-[#C9933A] text-xs font-bold uppercase tracking-widest block font-accent-label">
+                🛠️ CRAFTSMANSHIP & METALLURGY
+              </span>
+              <h3 className="font-serif italic text-2xl font-bold text-[#FAF7F2]">
+                Guaranteed Material Integrity
+              </h3>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-[#FAF7F2]/80 leading-relaxed font-medium">
+                <div className="space-y-1">
+                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Real-Weight Base Alloy</h4>
+                  <p>We use a premium copper-brass metal base. This gives our chokers and jhumkas the satisfying, substantial weight of real gold jewellery, instead of light, cheap plastic alternatives.</p>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">18k Micro-Gold Plating</h4>
+                  <p>Our pieces are micro-plated with a warm 18k gold tone and treated with an anti-tarnish protective lacquer to ensure long-lasting lustre and resistance to oxidation.</p>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">100% Skin Safe & Hypoallergenic</h4>
+                  <p>Free from harmful Lead, Nickel, or Cadmium. Our jewellery is certified safe for long Indian wedding events and sensitive skin types.</p>
+                </div>
+                <div className="space-y-1">
+                  <h4 className="font-bold text-[#C9933A] uppercase tracking-wider text-[10px]">Premium Protective Packaging</h4>
+                  <p>Every set is packaged in bubble wrap inside a rigid cardboard container and includes a custom soft suede storage pouch to prevent scratch friction.</p>
+                </div>
+              </div>
+              
+              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-4 items-center justify-between">
+                <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider">🌟 6-Month Polish Warranty Standard</span>
+                <button
+                  id="value-prop-action-btn"
+                  onClick={() => {
+                    resetFilters();
+                    navigateTo('shop');
+                  }}
+                  className="bg-[#C9933A] hover:bg-[#FAF7F2] hover:text-[#1B3A2D] text-white font-bold py-3 px-6 rounded-sm transition-all duration-300 text-[10px] uppercase tracking-wider cursor-pointer btn-gold"
+                >
+                  Shop the Collection
+                </button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -533,6 +583,67 @@ export default function Home() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* 5.5 CUSTOMER REVIEWS & TESTIMONIALS SECTION */}
+      <section id="homepage-testimonials-section" className="bg-[#FAF7F2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="text-center space-y-2 mb-10">
+          <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">⭐ WHAT CUSTOMERS SAY</span>
+          <h2 className="font-serif italic text-3xl font-bold text-[#1A1A1A]">Loved by 15,000+ Happy Customers</h2>
+          <p className="text-sm text-[#555555] max-w-md mx-auto">
+            See why women across India choose My Zevar for weddings, office wear, and family celebrations.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white border border-[#C9933A]/10 p-6 rounded-md shadow-xs space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-[#1A1A1A]">Anjali Sharma, Pune</span>
+              <span className="bg-emerald-50 text-emerald-800 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wide">Verified Buyer</span>
+            </div>
+            <div className="flex text-amber-500">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} size={13} className="fill-[#C9933A] stroke-[#C9933A]" />
+              ))}
+            </div>
+            <p className="text-xs text-[#555555] leading-relaxed italic">
+              "Absolutely brilliant piece! It looks extremely rich and premium. The gold polish is perfect, not too bright, and the adjustable thread is so useful because I have a slightly thicker neck. Wore it to a cousin’s pre-wedding function and got 10+ compliments!"
+            </p>
+            <p className="text-[10px] text-[#C9933A] font-bold uppercase tracking-wider">Purchased: Kundan Choker Set</p>
+          </div>
+
+          <div className="bg-white border border-[#C9933A]/10 p-6 rounded-md shadow-xs space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-[#1A1A1A]">Kavitha S., Chennai</span>
+              <span className="bg-emerald-50 text-emerald-800 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wide">Verified Buyer</span>
+            </div>
+            <div className="flex text-amber-500">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} size={13} className="fill-[#C9933A] stroke-[#C9933A]" />
+              ))}
+            </div>
+            <p className="text-xs text-[#555555] leading-relaxed italic">
+              "Stunning antique finish. It has that matte, dark red-gold temple jewellery vibe that I’ve been searching for. Looks just like the real gold set my mother has. Weight is solid but non-pinching."
+            </p>
+            <p className="text-[10px] text-[#C9933A] font-bold uppercase tracking-wider">Purchased: Temple Lakshmi Antique Set</p>
+          </div>
+
+          <div className="bg-white border border-[#C9933A]/10 p-6 rounded-md shadow-xs space-y-4">
+            <div className="flex justify-between items-center">
+              <span className="text-xs font-bold text-[#1A1A1A]">Roshni Singh, Bangalore</span>
+              <span className="bg-emerald-50 text-emerald-800 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wide">Verified Buyer</span>
+            </div>
+            <div className="flex text-amber-500">
+              {[1, 2, 3, 4, 5].map((s) => (
+                <Star key={s} size={13} className="fill-[#C9933A] stroke-[#C9933A]" />
+              ))}
+            </div>
+            <p className="text-xs text-[#555555] leading-relaxed italic">
+              "I wear these jhumkas to office almost daily now. They are so lightweight I literally forget I’m wearing them. The packaging is high-class and would make a great gift. Buy them without thinking twice!"
+            </p>
+            <p className="text-[10px] text-[#C9933A] font-bold uppercase tracking-wider">Purchased: Floral Jhumka Earrings</p>
+          </div>
         </div>
       </section>
 

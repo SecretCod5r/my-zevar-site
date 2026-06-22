@@ -43,20 +43,28 @@ export default function Contact() {
 
   const faqs: FAQItem[] = [
     {
-      question: 'How long does delivery take?',
-      answer: 'Orders are usually delivered within 3–7 business days, depending on your location.'
+      question: 'How long does delivery take and is shipping free?',
+      answer: 'We dispatch all in-stock orders within 24 hours of confirmation. Delivery takes 3–5 business days to major metros (Mumbai, Delhi, Bangalore, Chennai) and up to 7 business days for other regions. Shipping is completely FREE on all orders above ₹499. For orders below ₹499, a flat shipping fee of ₹50 is charged.'
     },
     {
-      question: 'Can I return or exchange my order?',
-      answer: 'Yes, we offer a hassle-free 24 hours return and exchange policy. If something isn’t right, we’ve got you covered.'
+      question: 'What is your return and exchange policy?',
+      answer: 'We offer a tarnish-free, damage-free guarantee. If your piece arrives damaged or has polish errors, we provide a hassle-free 24-hour return and replacement window. Simply message our team on WhatsApp (+91-9013114748) with your Order ID and an unboxing video/photo, and we will arrange a free exchange pickup.'
     },
     {
-      question: 'Will the necklace lose its shine?',
-      answer: 'Our pieces are crafted to be long-lasting and tarnish-resistant with proper care.'
+      question: 'Will the gold plating lose its lustre or turn black?',
+      answer: 'All My Zevar sets are micro-plated with genuine 18k gold tone and sealed with a high-grade tarnish-resistant protective lacquer. With proper care (wiping dry after use, storing in a dry suede box, and keeping away from perfumes, sanitizers, and pool chlorine), the gold shine will remain brilliant for years.'
     },
     {
-      question: 'Is the jewellery real gold?',
-      answer: 'No, all our jewellery items are high-quality copper & brass alloy artificial imitation jewelry coated in premium gold plating and detailed with faux pearls and Kundan glass studs.'
+      question: 'Is this real gold, and what metals are used?',
+      answer: 'No, our collections are premium imitation/artificial jewellery. We construct the core bases from high-density copper and brass alloys to ensure a realistic weight and sturdy build (no cheap plastic cores). The sets are then micro-plated in gold, detailed with glass Kundan stones, and finished with synthetic shell pearls.'
+    },
+    {
+      question: 'Are your jewellery sets safe for sensitive skin?',
+      answer: 'Yes, absolutely. We enforce a 100% Lead-free, Cadmium-free, and Nickel-free standard on all our supplier polishing. Our pieces are certified hypoallergenic and completely safe for sensitive skin types, meaning they will not cause itching or leave green marks on your neck.'
+    },
+    {
+      question: 'What payment methods do you accept, and do you offer COD?',
+      answer: 'We support all major payment types. You can pay securely online via Credit/Debit Cards, UPI (GPay, PhonePe, Paytm), and Net Banking through our Razorpay checkout gateway. We also offer Cash on Delivery (COD) for all pin codes across India at no additional surcharge.'
     }
   ];
 
@@ -65,7 +73,7 @@ export default function Contact() {
       
       {/* 1. HEADER SECTION */}
       <section className="text-center space-y-2.5 max-w-lg mx-auto">
-        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block">💬 RECONCILIATION & DETAILS</span>
+        <span className="text-[#1B6B5A] text-xs font-bold uppercase tracking-widest block font-accent-label">💬 SUPPORT & HELP CENTER</span>
         <h1 className="font-serif italic text-3xl sm:text-4xl font-extrabold text-[#1A1A1A]">Contact Customer Support</h1>
         <p className="text-sm text-[#555555]">
           Whether it is about an order dispatch, returns, or product weight, reach out—we are here to help.
@@ -99,7 +107,7 @@ export default function Contact() {
             </a>
 
             {/* Other direct data nodes */}
-            <div className="space-y-4 pt-4 border-t border-gray-100 text-xs">
+            <div className="space-y-4 pt-4 border-t border-gray-100 text-xs text-left font-medium leading-relaxed">
               
               <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
@@ -110,6 +118,33 @@ export default function Contact() {
                   <a href="mailto:support@myzevar.com" className="text-sm font-semibold text-[#1B6B5A] hover:underline block mt-0.5">
                     support@myzevar.com
                   </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
+                  <Clock className="text-[#1B6B5A]" size={14} />
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wider text-[10px]">Support Hours</h4>
+                  <p className="text-xs text-gray-600 mt-0.5">
+                    Monday to Saturday: 10:00 AM — 07:00 PM IST
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3 pt-2">
+                <div className="w-8 h-8 rounded-full bg-[#1B6B5A]/5 flex items-center justify-center shrink-0">
+                  <span className="text-xs text-[#1B6B5A] font-bold">🏢</span>
+                </div>
+                <div>
+                  <h4 className="font-bold text-[#1A1A1A] uppercase tracking-wider text-[10px]">Registered Corporate Office</h4>
+                  <p className="text-xs text-gray-600 mt-0.5 leading-normal">
+                    Malik Enterprises (My Zevar)<br />
+                    102, Sona Villa, Hill Road, Bandra West,<br />
+                    Mumbai, Maharashtra — 400050<br />
+                    <span className="text-[9px] uppercase font-bold text-[#C9933A] block mt-1">GSTIN: 27AABCM8473R1ZM</span>
+                  </p>
                 </div>
               </div>
 

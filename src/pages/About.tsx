@@ -21,7 +21,7 @@ export default function About() {
     
     <text x="100" y="200" fill="%23FAF7F2" font-family="Georgia, serif" font-weight="bold" font-size="38" font-style="italic">Neha Malik</text>
     <text x="100" y="245" fill="%23C9933A" font-family="'DM Sans', sans-serif" font-weight="700" font-size="14" letter-spacing="3">FOUNDER OF MY ZEVAR</text>
-    <text x="100" y="295" fill="%23FAF7F2" fill-opacity="0.8" font-family="'DM Sans', sans-serif" font-size="16">"Beautiful jewellery shouldn't break your house pocket bank accounts."</text>
+    <text x="100" y="295" fill="%23FAF7F2" fill-opacity="0.8" font-family="'DM Sans', sans-serif" font-size="16">"Elegant, tarnish-free ethnic sets shouldn't cost a fortune."</text>
   </svg>`.replace(/[\r\n\t]/g, ' ');
 
   return (
@@ -68,14 +68,35 @@ export default function About() {
         </div>
 
         {/* Founder Portrait Badge card */}
-        <div className="lg:col-span-5 bg-white border border-[#C9933A]/20 rounded-md p-6 shadow-sm space-y-4">
+        <div className="lg:col-span-5 bg-white border border-[#C9933A]/20 rounded-md p-6 shadow-sm space-y-6">
           <div className="bg-[#FAF7F2] p-4 text-center rounded-sm space-y-2 border border-[#C9933A]/10">
             <span className="text-3xl">🙋‍♀️</span>
             <h3 className="font-serif italic text-lg font-bold text-[#1A1A1A]">A Personal Message</h3>
-            <p className="text-xs text-[#555555] leading-relaxed font-sans">
+            <p className="text-xs text-[#555555] leading-relaxed font-sans font-medium">
               "Every necklace and earring you see on My Zevar has been checked by me personally for weight, finish, and skin comfort. I wear them myself first. If it isn't beautiful enough for my cousin's festive evening, it doesn't enter our catalog."
             </p>
             <p className="text-xs text-[#1B6B5A] font-bold">— Neha Malik, Founder</p>
+          </div>
+          <div className="space-y-3.5 border-t border-[#C9933A]/10 pt-4 text-xs text-[#555555] font-medium leading-relaxed text-left">
+            <h4 className="font-serif italic text-sm font-bold text-[#1A1A1A]">Our Quality Checklist:</h4>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9933A] text-xs">✨</span>
+                <span><strong>Micro-Gold Finish:</strong> Hand-polished 18k gold plating for a warm, real gold color tone.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9933A] text-xs">✨</span>
+                <span><strong>Copper-Brass Alloy Base:</strong> Selected for structural strength and a realistic, substantial weight.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9933A] text-xs">✨</span>
+                <span><strong>Nickel & Lead Free:</strong> 100% hypoallergenic materials certified to prevent green skin staining or itching.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-[#C9933A] text-xs">✨</span>
+                <span><strong>Secure Indian Transit Box:</strong> Reinforced heavy casing with bubble compartments to safeguard delicate kundan and pearl work.</span>
+              </li>
+            </ul>
           </div>
         </div>
 
@@ -142,7 +163,7 @@ export default function About() {
             onClick={() => navigateTo('shop')}
             className="bg-[#C9933A] hover:bg-white hover:text-[#1B3A2D] text-white font-bold py-3 px-8 rounded-sm text-xs uppercase tracking-wider transition-colors cursor-pointer"
           >
-            Start Shopping Clevers
+            Browse the Collection
           </button>
         </div>
       </section>

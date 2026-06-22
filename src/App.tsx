@@ -15,6 +15,25 @@ import Contact from './pages/Contact';
 function MainLayout() {
   const { activePage } = useApp();
 
+  React.useEffect(() => {
+    switch (activePage) {
+      case 'home':
+        document.title = 'My Zevar | Premium Kundan & Temple Jewellery Online India';
+        break;
+      case 'shop':
+        document.title = 'Shop Indian Ethnic Jewellery Sets & Chokers | My Zevar';
+        break;
+      case 'about':
+        document.title = 'Our Story & Founder\'s Promise | My Zevar';
+        break;
+      case 'contact':
+        document.title = 'Contact Support & Frequently Asked Questions (FAQ) | My Zevar';
+        break;
+      default:
+        break;
+    }
+  }, [activePage]);
+
   return (
     <div className="min-h-screen flex flex-col justify-between bg-[#FAF7F2] font-sans antialiased text-[#1A1A1A]">
       
