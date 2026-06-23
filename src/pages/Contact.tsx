@@ -69,7 +69,7 @@ export default function Contact() {
   ];
 
   return (
-    <div id="contact-page-wrapper" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div id="contact-page-wrapper" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-10 sm:space-y-14">
       
       {/* 1. HEADER SECTION */}
       <section className="text-center space-y-2.5 max-w-lg mx-auto">

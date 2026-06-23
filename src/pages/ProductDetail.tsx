@@ -122,7 +122,7 @@ export default function ProductDetail() {
   const discountAmount = hasOriginalPrice ? product.originalPrice! - product.price : 0;
 
   return (
-    <div id="product-detail-page-wrapper" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div id="product-detail-page-wrapper" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-8 sm:space-y-12">
       
       {/* Product Primary showcase */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
@@ -150,25 +150,19 @@ export default function ProductDetail() {
           </div>
 
           {/* Thumbnail Gallery Row */}
-          <div className="flex gap-2.5 justify-center overflow-x-auto py-1 no-scrollbar">
+          <div className="flex gap-2 justify-start sm:justify-center overflow-x-auto py-1 no-scrollbar">
             {product.images.map((img, idx) => (
               <button
                 key={idx}
                 onClick={() => handleThumbnailClick(idx)}
-                style={{ contentVisibility: 'auto' }}
-                className={`w-20 h-20 rounded-md border-2 overflow-hidden bg-white shrink-0 transition-all duration-300 ${
-                  activeImageIdx === idx 
-                    ? 'border-[#1B6B5A] scale-105 shadow-sm ring-1 ring-[#1B6B5A]/25' 
-                    : 'border-[#C9933A]/15 opacity-70 hover:opacity-100 hover:scale-102 hover:border-[#C9933A]/50'
+                className={`w-14 h-14 sm:w-20 sm:h-20 rounded-md border-2 overflow-hidden bg-white shrink-0 transition-all duration-200 ${
+                  activeImageIdx === idx
+                    ? 'border-[#1B6B5A] shadow-sm ring-1 ring-[#1B6B5A]/25'
+                    : 'border-[#C9933A]/15 opacity-70 hover:opacity-100 hover:border-[#C9933A]/50'
                 }`}
-                aria-label={`Show illustration view ${idx + 1}`}
+                aria-label={`View ${idx + 1}`}
               >
-                <img 
-                  src={img} 
-                  alt={`${product.name} thumbnail ${idx}`} 
-                  className="w-full h-full object-cover select-none"
-                  referrerPolicy="no-referrer"
-                />
+                <img src={img} alt={`${product.name} view ${idx + 1}`} className="w-full h-full object-cover select-none" referrerPolicy="no-referrer" />
               </button>
             ))}
           </div>
@@ -187,7 +181,7 @@ export default function ProductDetail() {
 
           {/* Title and Ratings Header */}
           <div className="space-y-2">
-            <h1 className="font-serif italic text-3xl font-extrabold text-[#1A1A1A] leading-tight">
+            <h1 className="font-serif italic text-2xl sm:text-3xl font-extrabold text-[#1A1A1A] leading-tight">
               {product.name}
             </h1>
             
@@ -249,8 +243,7 @@ export default function ProductDetail() {
           {/* Included checklist box */}
           <div className="bg-[#1B3A2D]/5 rounded-md border border-[#1B3A2D]/10 p-4">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#1B3A2D] mb-1.5 flex items-center gap-1.5">
-              <span>🎁</span>
-              <span>What's included inside the box</span>
+              <span>What's Included in the Box</span>
             </h4>
             <div className="text-xs font-semibold text-[#1B3A2D]/90 flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-[#C9933A] rounded-full" />
@@ -285,7 +278,7 @@ export default function ProductDetail() {
             <button
               id="pdp-buy-now-btn"
               onClick={() => buyNow(product)}
-              className="w-full bg-[#C9933A] hover:bg-[#1B3A2D] hover:scale-[1.01] active:scale-[0.99] text-white py-4 px-6 rounded-sm font-bold text-sm tracking-wide transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer uppercase text-center transform"
+              className="w-full bg-[#C9933A] hover:bg-[#1B3A2D] active:bg-[#1B3A2D] text-white py-3.5 sm:py-4 px-6 rounded-sm font-bold text-sm tracking-wide transition-all duration-300 shadow-sm cursor-pointer uppercase text-center"
             >
               Buy Now — Secure Checkout
             </button>
@@ -492,27 +485,26 @@ export default function ProductDetail() {
           <h3 className="font-serif italic text-2xl font-bold text-[#1A1A1A] mt-1">Related Picks</h3>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {finalRelated.map((p) => (
-            <div 
+            <div
               key={p.id}
-              className="group flex flex-col justify-between bg-white border border-[#C9933A]/10 hover:border-[#C9933A] rounded-sm p-3.5 transition-all duration-300 relative cursor-pointer"
+              className="group flex flex-col bg-white border border-[#C9933A]/10 hover:border-[#C9933A]/40 rounded-sm transition-all duration-200 cursor-pointer hover:shadow-md"
               onClick={() => openProduct(p.id)}
             >
-              <div className="aspect-square w-full rounded-sm overflow-hidden bg-[#FAF7F2] mb-3">
-                <img 
-                  src={p.images[0]} 
-                  alt={p.name} 
+              <div className="aspect-square w-full rounded-t-sm overflow-hidden bg-[#FAF7F2]">
+                <img
+                  src={p.images[0]}
+                  alt={p.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
               </div>
-
-              <div>
-                <span className="text-[9px] text-[#C9933A] uppercase tracking-wider font-semibold block">{p.category}</span>
-                <h4 className="text-xs font-medium text-[#1A1A1A] line-clamp-1 mt-0.5">{p.name}</h4>
-                <p className="text-xs font-bold text-[#1B6B5A] mt-2">₹{p.price}</p>
+              <div className="p-2.5 space-y-1">
+                <span className="text-[9px] text-[#C9933A] uppercase tracking-wider font-semibold">{p.category}</span>
+                <h4 className="text-[11px] font-medium text-[#1A1A1A] line-clamp-2 leading-tight">{p.name}</h4>
+                <p className="text-sm font-extrabold text-[#1B6B5A]">₹{p.price}</p>
               </div>
             </div>
           ))}
@@ -527,33 +519,51 @@ export default function ProductDetail() {
             <h3 className="font-serif italic text-2xl font-bold text-[#1A1A1A] mt-1">Recently Viewed Items</h3>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4 sm:gap-6">
+          <div className="flex gap-3 overflow-x-auto no-scrollbar pb-1">
             {recentlyViewed.map((p) => (
-              <div 
+              <div
                 key={p.id}
-                className="group flex flex-col justify-between bg-white border border-[#C9933A]/10 hover:border-[#C9933A] rounded-sm p-3 transition-all duration-300 relative cursor-pointer"
+                className="group flex flex-col bg-white border border-[#C9933A]/10 hover:border-[#C9933A]/40 rounded-sm transition-all cursor-pointer hover:shadow-md shrink-0 w-32 sm:w-36"
                 onClick={() => openProduct(p.id)}
               >
-                <div className="aspect-square w-full rounded-sm overflow-hidden bg-[#FAF7F2] mb-2">
-                  <img 
-                    src={p.images[0]} 
-                    alt={p.name} 
+                <div className="aspect-square w-full rounded-t-sm overflow-hidden bg-[#FAF7F2]">
+                  <img
+                    src={p.images[0]}
+                    alt={p.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
                     loading="lazy"
                     referrerPolicy="no-referrer"
                   />
                 </div>
-
-                <div>
-                  <span className="text-[8px] text-[#C9933A] uppercase tracking-wider font-semibold block">{p.category}</span>
-                  <h4 className="text-[11px] font-medium text-[#1A1A1A] line-clamp-1 mt-0.5">{p.name}</h4>
-                  <p className="text-[11px] font-bold text-[#1B6B5A] mt-1">₹{p.price}</p>
+                <div className="p-2">
+                  <span className="text-[8px] text-[#C9933A] uppercase tracking-wider font-semibold">{p.category}</span>
+                  <h4 className="text-[10px] font-medium text-[#1A1A1A] line-clamp-2 mt-0.5 leading-tight">{p.name}</h4>
+                  <p className="text-xs font-bold text-[#1B6B5A] mt-1">₹{p.price}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {/* STICKY MOBILE ADD TO CART - only on small screens */}
+      <div className="fixed bottom-0 left-0 right-0 z-30 lg:hidden bg-[#FAF7F2] border-t border-[#C9933A]/20 px-4 py-3 flex gap-2.5" style={{ paddingBottom: 'calc(12px + env(safe-area-inset-bottom))' }}>
+        <button
+          onClick={() => addToCart(product)}
+          className="flex-1 bg-[#1B6B5A] active:bg-[#C9933A] text-white font-bold py-3 rounded-sm text-sm uppercase tracking-wide cursor-pointer transition-colors"
+        >
+          Add to Bag — ₹{product.price}
+        </button>
+        <button
+          onClick={() => buyNow(product)}
+          className="flex-1 bg-[#C9933A] active:bg-[#1B3A2D] text-white font-bold py-3 rounded-sm text-sm uppercase tracking-wide cursor-pointer transition-colors"
+        >
+          Buy Now
+        </button>
+      </div>
+
+      {/* bottom padding so sticky bar doesn't cover content on mobile */}
+      <div className="h-20 lg:hidden" aria-hidden="true" />
 
     </div>
   );

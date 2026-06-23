@@ -25,7 +25,7 @@ export default function About() {
   </svg>`.replace(/[\r\n\t]/g, ' ');
 
   return (
-    <div id="about-page-container" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+    <div id="about-page-container" className="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-10 sm:space-y-14">
       
       {/* 1. HERO HEADER INTRO */}
       <section className="max-w-4xl mx-auto text-center space-y-4">

@@ -281,7 +281,7 @@ export default function CartDrawer() {
                 <div className="bg-[#1B3A2D] text-white px-6 py-3 text-xs flex justify-between items-center transition-all duration-300">
                   {isFreeDev ? (
                     <span className="flex items-center gap-1.5 font-medium">
-                      🚀 <strong className="text-amber-400">Awesome!</strong> You've unlocked FREE Delivery!
+                      <strong className="text-amber-400">Free Delivery unlocked!</strong> Your order ships free.
                     </span>
                   ) : (
                     <span>
